@@ -15,16 +15,17 @@ try:
         for line in txt_file:
             temp_dict, temp_key = calc_prib(line)
             my_dict.update(temp_dict)
-            print(temp_dict)
             temp_val =temp_dict.pop(temp_key)
-            print(temp_val)
             if temp_val >= 0:
                 av_prib += temp_val
             count += 1
-        my_dict.update({"average_prib":av_prib/count})
-        print(my_dict)
+        dict_av_prib={"average_prib":av_prib/count}
+        my_list=[]
+        my_list.append(my_dict)
+        my_list.append(dict_av_prib)
+        print(my_list)
     with open(f_name+".json", 'w') as json_file:
-        json.dump(my_dict, json_file)
+        json.dump(my_list, json_file)
 except IOError:
     print(r"input\output error!")
-print(my_dict)
+
